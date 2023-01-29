@@ -5,26 +5,18 @@ import { AudioContext } from './AudioContextProvider';
 
 export default function SoundButton(props) {
 
-  const {audio, audioName, setAudioName, isPlaying, setIsPlaying} = React.useContext(AudioContext);
+  const {audio, setAudioName, setIsPlaying} = React.useContext(AudioContext);
   const musicRef = useRef(audio);
 
   function playSound() {
-    if (audioName !== props.clipName) {
       musicRef.current.pause();
-      musicRef.current.src = process.env.PUBLIC_URL + `/music/${props.clipName}`;
-      musicRef.current.volume = 0.25
+      
+      props.type === 'music' ? musicRef.current.src = process.env.PUBLIC_URL + `/music/${props.clipName}` 
+      : musicRef.current.src = process.env.PUBLIC_URL + `/sfx/${props.clipName}`;
+      musicRef.current.volume = 0.5;
       setAudioName(props.clipName);
       musicRef.current.play();
       setIsPlaying(true);
-    }else {
-      isPlaying ? setIsPlaying(false) : setIsPlaying(true);
-      if (isPlaying) {
-        musicRef.current.pause();
-      } else {
-        musicRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
   }
 
   return (

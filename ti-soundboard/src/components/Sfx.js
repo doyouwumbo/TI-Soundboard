@@ -4,15 +4,15 @@ import SoundButton from './SoundButton';
 
 export default function Sounds() {
 
-  const musicNames = ['ANIMA - ReoNa.mp3', 'Overfly - Luna Haruna.mp3'];
+  const musicNames = ['Xylophone.mp3'];
   
   return (
     <div className="sounds">
-        <Box sx={{display: 'flex', flexWrap: 'wrap',}}>
+        <Box sx={{display: 'flex'}}>
           {
           musicNames.map((clip) => {
             return(
-            <SoundButton clipName={clip} key={clip} type='music'/>
+            <SoundButton clipName={clip} key={clip} type='sfx'/>
           )})
           }
         </Box>
