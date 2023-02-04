@@ -1,21 +1,35 @@
-import { Box } from '@mui/system'
-import React from 'react'
+import { Box } from '@mui/system';
+import React from 'react';
 import SoundButton from './SoundButton';
+import data from './data/sounds.json';
 
-export default function Sounds() {
-
-  const musicNames = ['Xylophone.mp3'];
-  
+export default function Sounds() {  
   return (
-    <div className="sounds">
-        <Box sx={{display: 'flex'}}>
-          {
-          musicNames.map((clip) => {
-            return(
-            <SoundButton clipName={clip} key={clip} type='sfx'/>
-          )})
-          }
-        </Box>
-    </div>
+    <Box sx={{display: 'flex', 
+    flexWrap: 'wrap', 
+    width: '100%',
+    mt: '10px',
+    mb: '10px', 
+    justifyContent: 'space-evenly', 
+    maxHeight: '100%',
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '10px',
+    },
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      width: '10px',
+      backgroundColor: 'white',
+      borderRadius: 16
+    }
+    }}>
+    {
+        data.sounds.map((clip) => {
+          return (<SoundButton clipName={clip.name} key={clip.name} type='sfx'/>);
+        })
+      }
+    </Box>
   )
 }

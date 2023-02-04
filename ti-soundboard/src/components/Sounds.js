@@ -1,21 +1,38 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import SoundButton from './SoundButton';
+import data from './data/sounds.json'
 
 export default function Sounds() {
-
-  const musicNames = ['ANIMA - ReoNa.mp3', 'Overfly - Luna Haruna.mp3'];
-  
+  let i = -1;
   return (
-    <div className="sounds">
-        <Box sx={{display: 'flex', flexWrap: 'wrap',}}>
-          {
-          musicNames.map((clip) => {
-            return(
-            <SoundButton clipName={clip} key={clip} type='music'/>
-          )})
-          }
-        </Box>
-    </div>
+    <Box sx={{display: 'flex',
+    ml: '10px', 
+    flexWrap: 'wrap', 
+    width: '100%',
+    mt: '10px',
+    mb: '10px', 
+    justifyContent: 'space-evenly',
+    maxHeight: '100%',
+    overflowY: 'auto',
+    '&::-webkit-scrollbar': {
+      width: '10px',
+    },
+    '&::-webkit-scrollbar-track': {
+      background: 'transparent',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      width: '10px',
+      backgroundColor: 'white',
+      borderRadius: 16
+    }
+    }}>
+      {
+        data.music.map((clip) => {
+          i++;
+          return (<SoundButton clipName={clip.name} key={i} artistName={clip.artist} type='music'/>);
+        })
+      }
+    </Box>
   )
 }

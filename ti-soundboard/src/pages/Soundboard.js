@@ -9,11 +9,12 @@ import {styled} from '@mui/material/styles';
 const SoundContainerBox = styled(Box)(() => ({
   display: 'flex', 
   minHeight: '600px',
+  maxHeight: '600px',
   width: '40%',
   minWidth: '500px', 
   backgroundColor: "#2c333d",
   margin: '10px',
-  borderRadius: '32px'
+  borderRadius: '16px',
 }))
 
 export default function Soundboard() {
