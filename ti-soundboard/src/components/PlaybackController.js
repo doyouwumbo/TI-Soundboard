@@ -128,9 +128,13 @@ export default function PlaybackController() {
         alignItems: 'center',
         backgroundColor: "#2c333d", 
         margin: '60px',
+        mb: '30px',
         height: '166px',
         minWidth: '400px',
-        borderRadius: '32px'
+        borderRadius: '16px',
+        border: 1,
+        borderWidth: '2px',
+        boxShadow: '0px 0px 10px black'
           }}>
         <Stack sx={{width: '90%'}}>
           <Box sx={{display: 'flex', width: '100%'}}>
@@ -142,11 +146,11 @@ export default function PlaybackController() {
 
               {
                 !isPlaying && audioName !== "" &&
-                <PlayArrowIcon sx={{display: 'flex', fontSize: '50px', color: 'white', textAlign: 'left'}} onClick={handlePausePlay}></PlayArrowIcon>
+                <PlayArrowIcon sx={{display: 'flex', fontSize: '50px', color: 'white', "&:hover": {color: 'lightgreen'}}} onClick={handlePausePlay}></PlayArrowIcon>
               }
 
               {
-                isPlaying && audioName !== "" && <PauseIcon sx={{fontSize: '50px',  color: 'white'}} onClick={handlePausePlay}></PauseIcon>
+                isPlaying && audioName !== "" && <PauseIcon sx={{fontSize: '50px',  color: 'white', "&:hover": {color: 'lightgreen'}}} onClick={handlePausePlay}></PauseIcon>
               }
             </Box> 
             <Stack spacing={-0.5} sx={{justifyContent: 'center'}}>
